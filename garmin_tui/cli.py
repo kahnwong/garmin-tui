@@ -42,11 +42,17 @@ def sleep():
     r = get.sleep()
 
     plot(
-        [
+        ys=[
             utils.extract_key_as_list(r, "deep"),
             utils.extract_key_as_list(r, "light"),
             utils.extract_key_as_list(r, "rem"),
             utils.extract_key_as_list(r, "awake"),
+        ],
+        xs=[
+            utils.extract_key_as_list(r, "date"),
+            utils.extract_key_as_list(r, "date"),
+            utils.extract_key_as_list(r, "date"),
+            utils.extract_key_as_list(r, "date"),
         ],
         color=["blue", "cyan", "magenta", "yellow"],
         legend_labels=["Deep", "Light", "REM", "Awake"],
@@ -54,4 +60,26 @@ def sleep():
         lines=True,
         height=8,
         width=70,
+    )
+
+
+@cli.command(name="stress")
+def stress():
+    "Display stress"
+    r = get.stress()
+
+    plot(
+        ys=[
+            utils.extract_key_as_list(r, "max"),
+            utils.extract_key_as_list(r, "avg"),
+        ],
+        xs=[
+            utils.extract_key_as_list(r, "date"),
+            utils.extract_key_as_list(r, "date"),
+        ],
+        color=["#fb4f14", "#ffb347"],
+        legend_labels=["Max", "Average"],
+        title="Stress",
+        lines=True,
+        height=5,
     )

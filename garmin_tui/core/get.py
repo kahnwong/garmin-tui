@@ -49,3 +49,23 @@ def sleep() -> list[dict[str, Any]]:
             pass
 
     return r_filtered
+
+
+def stress() -> list[dict[str, Any]]:
+    r = []
+    for date in date_all:
+        r.append(garmin.get_stress_data(date.isoformat()))
+
+    r_filtered = []
+    for i in r:
+        try:
+            d = {
+                "date": i["calendarDate"],
+                "max": i["maxStressLevel"],
+                "avg": i["avgStressLevel"],
+            }
+            r_filtered.append(d)
+        except KeyError:
+            pass
+
+    return r_filtered
