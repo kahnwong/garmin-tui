@@ -27,3 +27,25 @@ def body_battery() -> list[dict[str, Any]]:
             }
         )
     return r
+
+
+def sleep() -> list[dict[str, Any]]:
+    r = []
+    for date in date_all:
+        r.append(garmin.get_sleep_data(date.isoformat()))
+
+    r_filtered = []
+    for i in r:
+        try:
+            d = {
+                "date": i["dailySleepDTO"]["calendarDate"],
+                "deep": i["dailySleepDTO"]["deepSleepSeconds"],
+                "light": i["dailySleepDTO"]["lightSleepSeconds"],
+                "rem": i["dailySleepDTO"]["remSleepSeconds"],
+                "awake": i["dailySleepDTO"]["awakeSleepSeconds"],
+            }
+            r_filtered.append(d)
+        except KeyError:
+            pass
+
+    return r_filtered

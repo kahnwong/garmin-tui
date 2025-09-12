@@ -34,3 +34,24 @@ def body_battery():
         height=5,
         width=70,
     )
+
+
+@cli.command(name="sleep")
+def sleep():
+    "Display sleep"
+    r = get.sleep()
+
+    plot(
+        [
+            utils.extract_key_as_list(r, "deep"),
+            utils.extract_key_as_list(r, "light"),
+            utils.extract_key_as_list(r, "rem"),
+            utils.extract_key_as_list(r, "awake"),
+        ],
+        color=["blue", "cyan", "magenta", "yellow"],
+        legend_labels=["Deep", "Light", "REM", "Awake"],
+        title="Sleep",
+        lines=True,
+        height=8,
+        width=70,
+    )
