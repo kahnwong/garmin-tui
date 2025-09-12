@@ -8,7 +8,6 @@ Also if you can't tell by now, I'm very lazy, especially if I have to open a bro
 
 ## Install
 
-
 ```bash
 make install
 ```

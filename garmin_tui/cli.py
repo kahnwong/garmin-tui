@@ -29,10 +29,10 @@ def body_battery():
     plot(
         ys=utils.extract_key_as_list(r, "charged"),
         xs=utils.extract_key_as_list(r, "date"),
+        color=["blue"],
         title="Body Battery",
         lines=True,
         height=5,
-        width=70,
     )
 
 
@@ -80,6 +80,21 @@ def stress():
         color=["#fb4f14", "#ffb347"],
         legend_labels=["Max", "Average"],
         title="Stress",
+        lines=True,
+        height=5,
+    )
+
+
+@cli.command(name="rhr")
+def resting_heart_rate():
+    "Display resting heart rate"
+    r = get.resting_heart_rate()
+
+    plot(
+        ys=utils.extract_key_as_list(r, "restingHeartRate"),
+        xs=utils.extract_key_as_list(r, "date"),
+        color=["red"],
+        title="Resting Heart Rate",
         lines=True,
         height=5,
     )

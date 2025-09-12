@@ -69,3 +69,24 @@ def stress() -> list[dict[str, Any]]:
             pass
 
     return r_filtered
+
+
+def resting_heart_rate() -> list[dict[str, Any]]:
+    r = []
+    for date in date_all:
+        r.append(garmin.get_rhr_day(date.isoformat()))
+
+    r_filtered = []
+    for i in r:
+        try:
+            d = {
+                "date": i["statisticsStartDate"],
+                "restingHeartRate": i["allMetrics"]["metricsMap"][
+                    "WELLNESS_RESTING_HEART_RATE"
+                ][0]["value"],
+            }
+            r_filtered.append(d)
+        except KeyError:
+            pass
+
+    return r_filtered
