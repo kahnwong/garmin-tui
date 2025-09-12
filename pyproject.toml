@@ -9,6 +9,7 @@ dependencies = [
     "garminconnect>=0.2.30",
     "garth>=0.5.17",
     "requests>=2.32.5",
+    "uniplot>=0.21.4",
 ]
 
 [build-system]

@@ -13,7 +13,8 @@ from garth.exc import GarthHTTPError
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
+email = ""
+password = ""
 tokenstore = os.getenv("GARMINTOKENS") or "~/.garminconnect"
 tokenstore_base64 = os.getenv("GARMINTOKENS_BASE64") or "~/.garminconnect_base64"
 api = None
@@ -34,14 +35,14 @@ def get_mfa():
     return input("MFA one-time code: ")
 
 
-def init_api(email, password):
+def init_api(email=email, password=password):
     """Initialize Garmin API with your credentials."""
 
     try:
-        # Using Oauth1 and OAuth2 token files from directory
-        print(
-            f"Trying to login to Garmin Connect using token data from directory '{tokenstore}'...\n"
-        )
+        # # Using Oauth1 and OAuth2 token files from directory
+        # print(
+        #     f"Trying to login to Garmin Connect using token data from directory '{tokenstore}'...\n"
+        # )
 
         # Using Oauth1 and Oauth2 tokens from base64 encoded string
         # print(
