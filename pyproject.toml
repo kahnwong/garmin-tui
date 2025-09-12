@@ -1,0 +1,28 @@
+[project]
+name = "garmin-tui"
+version = "0.1"
+readme = "README.md"
+authors = [{name = "Karn Wong"}]
+requires-python = ">=3.13"
+dependencies = [
+    "click",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18.1",
+    "pytest>=8.3.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/kahnwong/garmin-tui"
+
+[project.scripts]
+garmin-tui = "garmin_tui.cli:cli"
+
+[project.optional-dependencies]
+test = ["pytest"]
