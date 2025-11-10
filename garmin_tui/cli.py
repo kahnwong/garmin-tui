@@ -24,7 +24,7 @@ def login():
 @cli.command(name="bb")
 def body_battery():
     "Display body battery"
-    r = get.body_battery()
+    r = get.Garmin().body_battery()
 
     plot(
         ys=utils.extract_key_as_list(r, "charged"),
@@ -39,7 +39,7 @@ def body_battery():
 @cli.command(name="sleep")
 def sleep():
     "Display sleep"
-    r = get.sleep()
+    r = get.Garmin().sleep()
 
     plot(
         ys=[
@@ -66,7 +66,7 @@ def sleep():
 @cli.command(name="stress")
 def stress():
     "Display stress"
-    r = get.stress()
+    r = get.Garmin().stress()
 
     plot(
         ys=[
@@ -88,7 +88,7 @@ def stress():
 @cli.command(name="rhr")
 def resting_heart_rate():
     "Display resting heart rate"
-    r = get.resting_heart_rate()
+    r = get.Garmin().resting_heart_rate()
 
     plot(
         ys=utils.extract_key_as_list(r, "restingHeartRate"),
